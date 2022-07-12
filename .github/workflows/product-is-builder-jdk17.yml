@@ -23,8 +23,10 @@ jobs:
           distribution: "adopt"
       - name: Clone product IS
         run: |
+          ls
           git clone https://github.com/wso2/product-is
       - name: Build product IS
         run: |
+          ls
           mvn clean install --batch-mode | tee mvn-build.log
 

@@ -24,5 +24,6 @@ jobs:
       - name: Build product IS
         run: |
           git clone https://github.com/wso2/product-is
+          cd product-is
           mvn clean install --batch-mode | tee mvn-build.log
 

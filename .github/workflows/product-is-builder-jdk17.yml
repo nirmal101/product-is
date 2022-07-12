@@ -1,8 +1,6 @@
 name: product-is-builder-jdk17
 
-on:
-  workflow_dispatch:
-  schedule: [push]
+on: [push]
 
 
 env:

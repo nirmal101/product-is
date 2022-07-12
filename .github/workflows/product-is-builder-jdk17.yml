@@ -2,6 +2,10 @@ name: product-is-builder-jdk17
 
 on:
   workflow_dispatch:
+  schedule:
+    # Everyday at 15:00 UTC (8.30 PM SL time)
+    - cron:  '0 15 * * *'
+
 
 env:
   MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.http.retryHandler.class=standard -Dmaven.wagon.http.retryHandler.count=3

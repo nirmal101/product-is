@@ -28,5 +28,7 @@ jobs:
       - name: Build product IS
         run: |
           ls
+          cd product-is/
+          ls
           mvn clean install --batch-mode | tee mvn-build.log
 

@@ -21,9 +21,10 @@ jobs:
         with:
           java-version: "17"
           distribution: "adopt"
-      - name: Build product IS
+      - name: Clone product IS
         run: |
           git clone https://github.com/wso2/product-is
-          cd product-is
+      - name: Build product IS
+        run: |
           mvn clean install --batch-mode | tee mvn-build.log
 

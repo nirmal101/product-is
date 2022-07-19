@@ -3,8 +3,8 @@ name: product-is-builder-jdk17
 on:
   workflow_dispatch:
   schedule:
-    # First day of each month at 15:00 UTC (8.30 PM SL time)
-    - cron:  '0 15 1 * *'
+    #    At 00:00 on day-of-month 1
+    - cron:  '0 0 1 * *'
 
 env:
   MAVEN_OPTS: -Dhttp.keepAlive=false -Dmaven.wagon.http.pool=false -Dmaven.wagon.http.retryHandler.class=standard -Dmaven.wagon.http.retryHandler.count=3
@@ -36,7 +36,7 @@ jobs:
         run: |
           ls
           cd product-is/modules/integration/
-          mvn clean install -U --batch-mode | tee mvn-build.log
+          mvn clean install --batch-mode | tee mvn-build.log
           PR_BUILD_STATUS=$(cat mvn-build.log | grep "\[INFO\] BUILD" | grep -oE '[^ ]+$')
           PR_TEST_RESULT=$(sed -n -e '/\[INFO\] Results:/,/\[INFO\] Tests run:/ p' mvn-build.log)
           PR_BUILD_FINAL_RESULT=$(
